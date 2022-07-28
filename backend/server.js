@@ -10,22 +10,26 @@ const app = express();
 app.use(express.json());
 
 app.use((req, res, next) => {
-  console.log(req.method, req.path, req); // log requests
+  console.log(req.method, req.path); // log requests
   next();
 });
 
 // routes
 app.use('/api/workouts', workoutRoutes);
 
+// listen for connections when called
+const listenForConnections = () => {
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
+}
+
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connection to database established');
 
-    // listen for requests
-    const PORT = process.env.PORT || 4000;
-    app.listen(PORT, () => {
-      console.log(`Server listening on port ${PORT}`);
-    });
+    listenForConnections();
   })
   .catch((error) => console.log(error));
