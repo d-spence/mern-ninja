@@ -67,11 +67,22 @@ header a {
   position: absolute;
   top: 20px;
   right: 20px;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
   background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
   color: #333;
+  padding: 6px;
+  border-radius: 4px;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+
+.workout-details span:hover {
+  background: #e7195a;
+  color: #f1f1f1;
 }
 
 /* new workout form */
