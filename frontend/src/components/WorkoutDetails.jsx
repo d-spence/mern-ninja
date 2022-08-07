@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 
 const WorkoutDetails = ({ workout }) => {
@@ -12,6 +13,7 @@ const WorkoutDetails = ({ workout }) => {
 
     if (response.ok) {
       dispatch({ type: 'DELETE_WORKOUT', payload: data });
+      toast.warn('Workout was deleted!');
     }
   }
 

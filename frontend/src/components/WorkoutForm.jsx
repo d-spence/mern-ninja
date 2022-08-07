@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 
 const WorkoutForm = () => {
@@ -36,6 +37,7 @@ const WorkoutForm = () => {
     } else if (response.ok) {
       resetForm();
       dispatch({ type: 'CREATE_WORKOUT', payload: data });
+      toast.success('Workout was created!');
     }
   }
 
