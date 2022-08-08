@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 
@@ -44,6 +44,11 @@ const WorkoutEditForm = () => {
     }
   }
 
+  const handleCancel = () => {
+    resetForm();
+    dispatch({ type: 'EDIT_WORKOUT_CLEAR_FORM' });
+  }
+
   return (
     <form className="workout-edit-form" onSubmit={handleSubmit}>
       <h3>Edit a Workout</h3>
@@ -81,6 +86,7 @@ const WorkoutEditForm = () => {
       />
 
       <button type="submit">Update Workout</button>
+      <button className="cancel" onClick={handleCancel}>Cancel</button>
       {error && <div className="error">{error}</div>}
     </form>
   );

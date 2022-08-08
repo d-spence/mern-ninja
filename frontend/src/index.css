@@ -129,9 +129,14 @@ form button {
   border: 0;
   color: #fff;
   padding: 10px;
+  margin: 10px 10px 0 0;
   font-family: "Poppins";
   border-radius: 4px;
   cursor: pointer;
+}
+
+form button.cancel {
+  background: #888;
 }
 
 div.error {
