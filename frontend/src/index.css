@@ -63,23 +63,31 @@ header a {
   color: #555;
 }
 
-.workout-details span {
+.workout-details .buttons {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.workout-details .buttons span {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10px;
-  height: 10px;
+  width: 24px;
+  height: 24px;
   color: #333;
-  padding: 8px;
+  padding: 2px;
   border-radius: 4px;
   transition: 0.2s all;
   cursor: pointer;
 }
 
-.workout-details span:hover {
+.workout-details .buttons .update:hover {
+  background: var(--primary);
+  color: #f1f1f1;
+}
+
+.workout-details .buttons .delete:hover {
   background: var(--error);
   color: #f1f1f1;
 }
@@ -140,7 +148,8 @@ div.error {
     grid-template-columns: 1fr;
   }
 
-  .workout-form {
+  .workout-form,
+  .workout-edit-form {
     order: -1;
   }
 }

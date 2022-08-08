@@ -7,7 +7,11 @@ const WorkoutDetails = ({ workout }) => {
 
   const dateCreated = new Date(workout.createdAt);
 
-  const handleClick = async () => {
+  const handleEditOnClick = () => {
+    dispatch({ type: 'EDIT_WORKOUT_FORM', payload: workout });
+  }
+
+  const handleDeleteOnClick = async () => {
     const response = await fetch('/api/workouts/' + workout._id, {
       method: 'DELETE',
     });
@@ -31,11 +35,18 @@ const WorkoutDetails = ({ workout }) => {
           includeSeconds: true,
         })} ({format(dateCreated, 'MM.dd.yy')})
       </p>
-      <span
-        className="material-symbols-outlined"
-        onClick={handleClick}
-        title="delete workout">delete
-      </span>
+      <div className="buttons">
+        <span
+          className="material-symbols-outlined update"
+          onClick={handleEditOnClick}
+          title="edit workout">update
+        </span>
+        <span
+          className="material-symbols-outlined delete"
+          onClick={handleDeleteOnClick}
+          title="delete workout">delete
+        </span>
+      </div>
     </div>
   );
 }
