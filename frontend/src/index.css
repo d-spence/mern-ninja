@@ -16,7 +16,7 @@ header {
 }
 
 header .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
@@ -30,7 +30,7 @@ header a {
 }
 
 .pages{
-  max-width: 1400px;
+  max-width: 1200px;
   padding: 20px;
   margin: 0 auto;
 }
@@ -39,7 +39,7 @@ header a {
 .home {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  gap: 60px;
+  gap: 40px;
 }
 
 .workout-details {
@@ -72,9 +72,8 @@ header a {
   justify-content: center;
   width: 10px;
   height: 10px;
-  background: #f1f1f1;
   color: #333;
-  padding: 6px;
+  padding: 8px;
   border-radius: 4px;
   transition: 0.2s all;
   cursor: pointer;
@@ -83,6 +82,15 @@ header a {
 .workout-details span:hover {
   background: var(--error);
   color: #f1f1f1;
+}
+
+.workout-details .date {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: #888;
+  font-size: 0.8rem;
+  text-align: right;
 }
 
 /* new workout form */
@@ -125,4 +133,14 @@ div.error {
   color: var(--error);
   border-radius: 4px;
   margin: 20px 0;
+}
+
+@media screen and (max-width: 900px) {
+  .home {
+    grid-template-columns: 1fr;
+  }
+
+  .workout-form {
+    order: -1;
+  }
 }
