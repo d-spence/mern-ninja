@@ -49,6 +49,7 @@ header a {
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  transition: 0.2s all;
 }
 
 .workout-details h4 {
@@ -99,6 +100,10 @@ header a {
   color: #888;
   font-size: 0.8rem;
   text-align: right;
+}
+
+.workout-details.editing {
+  background: #f1ebb1;
 }
 
 /* new workout form */
