@@ -21,11 +21,11 @@ const getWorkout = async (req, res) => {
     }
 
     const workout = await Workout.findById(id);
-  
+
     if (!workout) {
       throw new Error('No such workout');
     }
-  
+
     res.status(200).json(workout);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -35,6 +35,17 @@ const getWorkout = async (req, res) => {
 // create new workout
 const createWorkout = async (req, res) => {
   const { title, load, reps } = req.body;
+
+  // check if input fields are empty
+  let emptyFields = [];
+
+  if (!title) emptyFields.push('title');
+  if (!load) emptyFields.push('load');
+  if (!reps) emptyFields.push('reps');
+
+  if (emptyFields.length > 0) {
+    return res.status(400).json({ error: 'Please fill in all the fields', emptyFields });
+  }
 
   try {
     const workout = await Workout.create({ title, load, reps });
@@ -52,13 +63,13 @@ const deleteWorkout = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw new Error('No such workout');
     }
-  
+
     const workout = await Workout.findOneAndDelete({ _id: id });
-  
+
     if (!workout) {
       throw new Error('No such workout');
     }
-  
+
     res.status(200).json(workout);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -73,17 +84,17 @@ const updateWorkout = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw new Error('No such workout');
     }
-  
+
     const workout = await Workout.findOneAndUpdate(
       { _id: id },
       { ...req.body },
       { new: true },
     );
-  
+
     if (!workout) {
       throw new Error('No such workout');
     }
-  
+
     res.status(200).json(workout);
   } catch (error) {
     res.status(400).json({ error: error.message });

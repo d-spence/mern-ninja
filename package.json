@@ -1,0 +1,22 @@
+{
+  "name": "mern-ninja",
+  "version": "1.0.0",
+  "description": "MERN app for tracking workouts",
+  "main": "index.js",
+  "scripts": {
+    "backend": "npm run dev --prefix backend",
+    "frontend": "npm run start --prefix frontend",
+    "dev-all": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-spence/mern-ninja.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/d-spence/mern-ninja/issues"
+  },
+  "homepage": "https://github.com/d-spence/mern-ninja#readme"
+}

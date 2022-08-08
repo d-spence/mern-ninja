@@ -5,16 +5,17 @@ import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext();
   const [title, setTitle] = useState('');
-  const [load, setLoad] = useState(0);
-  const [reps, setReps] = useState(0);
+  const [load, setLoad] = useState('0');
+  const [reps, setReps] = useState('0');
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
-  const resetForm = (resetError=true) => {
+  const resetForm = () => {
     setTitle('');
-    setLoad(0);
-    setReps(0);
-
-    if (resetError) setError(null);
+    setLoad('0');
+    setReps('0');
+    setError(null);
+    setEmptyFields([]);
   }
 
   const handleSubmit = async (e) => {
@@ -34,6 +35,7 @@ const WorkoutForm = () => {
 
     if (!response.ok) {
       setError(data.error);
+      setEmptyFields(data.emptyFields);
     } else if (response.ok) {
       resetForm();
       dispatch({ type: 'CREATE_WORKOUT', payload: data });
@@ -50,6 +52,7 @@ const WorkoutForm = () => {
         id="title"
         type="text"
         placeholder="Ex: Push Ups"
+        className={emptyFields.includes('title') ? 'error' : ''}
         onChange={(e) => setTitle(e.target.value)}
         value={title}
       />
@@ -60,6 +63,7 @@ const WorkoutForm = () => {
         type="number"
         min="0"
         max="9999"
+        className={emptyFields.includes('load') ? 'error' : ''}
         onChange={(e) => setLoad(e.target.value)}
         value={load}
       />
@@ -70,6 +74,7 @@ const WorkoutForm = () => {
         type="number"
         min="0"
         max="9999"
+        className={emptyFields.includes('reps') ? 'error' : ''}
         onChange={(e) => setReps(e.target.value)}
         value={reps}
       />

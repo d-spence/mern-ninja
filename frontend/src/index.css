@@ -81,7 +81,7 @@ header a {
 }
 
 .workout-details span:hover {
-  background: #e7195a;
+  background: var(--error);
   color: #f1f1f1;
 }
 
@@ -101,7 +101,11 @@ input {
 }
 
 input:focus {
-  outline: 2px solid #1aac83;
+  outline: 2px solid var(--primary);
+}
+
+input.error {
+  border: 1px solid var(--error);
 }
 
 form button {
