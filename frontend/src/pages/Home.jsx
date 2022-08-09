@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 import WorkoutDetails from '../components/WorkoutDetails';
 import WorkoutForm from '../components/WorkoutForm';
+import WorkoutEditForm from '../components/WorkoutEditForm';
 
 const Home = () => {
-  const { workouts, dispatch } = useWorkoutsContext();
+  const { workouts, editedWorkout, dispatch } = useWorkoutsContext();
 
   useEffect(() => {
     const fetchWorkouts = async () => {
@@ -26,7 +27,8 @@ const Home = () => {
           <WorkoutDetails key={workout._id} workout={workout} />
         ))}
       </div>
-      <WorkoutForm />
+      {editedWorkout && <WorkoutEditForm workout={editedWorkout} />}
+      {!editedWorkout && <WorkoutForm />}
     </div>
   );
 }

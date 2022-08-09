@@ -49,6 +49,7 @@ header a {
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  transition: 0.2s all;
 }
 
 .workout-details h4 {
@@ -63,23 +64,31 @@ header a {
   color: #555;
 }
 
-.workout-details span {
+.workout-details .buttons {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.workout-details .buttons span {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10px;
-  height: 10px;
+  width: 24px;
+  height: 24px;
   color: #333;
-  padding: 8px;
+  padding: 2px;
   border-radius: 4px;
   transition: 0.2s all;
   cursor: pointer;
 }
 
-.workout-details span:hover {
+.workout-details .buttons .update:hover {
+  background: var(--primary);
+  color: #f1f1f1;
+}
+
+.workout-details .buttons .delete:hover {
   background: var(--error);
   color: #f1f1f1;
 }
@@ -93,12 +102,18 @@ header a {
   text-align: right;
 }
 
-/* new workout form */
-label, input {
+.workout-details.editing {
+  background: #f1ebb1;
+}
+
+/* new/edit workout forms */
+.workout-form label, input,
+.workout-edit-form label, input {
   display: block;
 }
 
-input {
+.workout-form input,
+.workout-edit-form input {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -108,25 +123,34 @@ input {
   box-sizing: border-box;
 }
 
-input:focus {
+.workout-form input:focus,
+.workout-edit-form input:focus {
   outline: 2px solid var(--primary);
 }
 
-input.error {
+.workout-form input.error,
+.workout-edit-form input.error {
   border: 1px solid var(--error);
 }
 
-form button {
+.workout-form button,
+.workout-edit-form button {
   background: var(--primary);
   border: 0;
   color: #fff;
   padding: 10px;
+  margin: 10px 10px 0 0;
   font-family: "Poppins";
   border-radius: 4px;
   cursor: pointer;
 }
 
-div.error {
+.workout-edit-form button.cancel {
+  background: #888;
+}
+
+.workout-form div.error,
+.workout-edit-form div.error {
   padding: 10px;
   background: #ffefef;
   border: 1px solid var(--error);
@@ -140,7 +164,8 @@ div.error {
     grid-template-columns: 1fr;
   }
 
-  .workout-form {
+  .workout-form,
+  .workout-edit-form {
     order: -1;
   }
 }
