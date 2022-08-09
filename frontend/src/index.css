@@ -106,12 +106,14 @@ header a {
   background: #f1ebb1;
 }
 
-/* new workout form */
-label, input {
+/* new/edit workout forms */
+.workout-form label, input,
+.workout-edit-form label, input {
   display: block;
 }
 
-input {
+.workout-form input,
+.workout-edit-form input {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -121,15 +123,18 @@ input {
   box-sizing: border-box;
 }
 
-input:focus {
+.workout-form input:focus,
+.workout-edit-form input:focus {
   outline: 2px solid var(--primary);
 }
 
-input.error {
+.workout-form input.error,
+.workout-edit-form input.error {
   border: 1px solid var(--error);
 }
 
-form button {
+.workout-form button,
+.workout-edit-form button {
   background: var(--primary);
   border: 0;
   color: #fff;
@@ -140,11 +145,12 @@ form button {
   cursor: pointer;
 }
 
-form button.cancel {
+.workout-edit-form button.cancel {
   background: #888;
 }
 
-div.error {
+.workout-form div.error,
+.workout-edit-form div.error {
   padding: 10px;
   background: #ffefef;
   border: 1px solid var(--error);
