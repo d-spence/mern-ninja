@@ -5,15 +5,15 @@ import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext();
   const [title, setTitle] = useState('');
-  const [load, setLoad] = useState('0');
-  const [reps, setReps] = useState('0');
+  const [load, setLoad] = useState(0);
+  const [reps, setReps] = useState(0);
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
   const resetForm = () => {
     setTitle('');
-    setLoad('0');
-    setReps('0');
+    setLoad(0);
+    setReps(0);
     setError(null);
     setEmptyFields([]);
   }

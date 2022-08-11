@@ -5,15 +5,15 @@ import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 const WorkoutEditForm = () => {
   const { editedWorkout, dispatch } = useWorkoutsContext();
   const [title, setTitle] = useState(editedWorkout ? editedWorkout.title : '');
-  const [load, setLoad] = useState(editedWorkout ? editedWorkout.load : '0');
-  const [reps, setReps] = useState(editedWorkout ? editedWorkout.reps : '0');
+  const [load, setLoad] = useState(editedWorkout ? editedWorkout.load : 0);
+  const [reps, setReps] = useState(editedWorkout ? editedWorkout.reps : 0);
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
   const resetForm = () => {
     setTitle('');
-    setLoad('0');
-    setReps('0');
+    setLoad(0);
+    setReps(0);
     setError(null);
     setEmptyFields([]);
   }
