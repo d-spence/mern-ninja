@@ -16,6 +16,27 @@ const userSchema = new Schema({
   }
 });
 
+// static login method
+userSchema.statics.login = async function(email, password) {
+  if (!email || !password) {
+    throw Error('All fields must be filled');
+  }
+
+  const user = await this.findOne({ email });
+
+  if (!user) {
+    throw Error('Invalid login credentials');
+  }
+
+  const passwordsMatch = await bcrypt.compare(password, user.password);
+
+  if (!passwordsMatch) {
+    throw Error('Invalid login credentials');
+  }
+
+  return user;
+}
+
 // static register method
 userSchema.statics.register = async function(email, password) {
   // validation
@@ -37,7 +58,6 @@ userSchema.statics.register = async function(email, password) {
 
   if (!validator.isStrongPassword(password, validatorPasswordOptions)) {
     const { minLength } = validatorPasswordOptions;
-
     throw Error (`Password must be valid and contain at least ${minLength} characters`);
   }
 
