@@ -85,7 +85,7 @@ const WorkoutEditForm = () => {
         value={reps}
       />
 
-      <button type="submit">Update Workout</button>
+      <button type="submit">Update</button>
       <button className="cancel" onClick={handleCancel}>Cancel</button>
       {error && <div className="error">{error}</div>}
     </form>

@@ -159,6 +159,34 @@ header a {
   margin: 20px 0;
 }
 
+/* navbar */
+.navbar nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar nav a {
+  margin-left: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: 0.2s all;
+}
+
+.navbar nav a:hover {
+  background: var(--primary);
+  color: #f1f1f1;
+}
+
+/* login and register auth forms */
+form.login,
+form.register {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
 @media screen and (max-width: 900px) {
   .home {
     grid-template-columns: 1fr;
