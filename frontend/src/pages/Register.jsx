@@ -1,18 +1,20 @@
-const { useState } = require('react')
+import { useState } from 'react';
+import { useRegister } from '../hooks/useRegister';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { register, isLoading, error } = useRegister();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(email, password);
+    await register(email, password);
   }
 
   return (
     <form className="register" onSubmit={handleSubmit}>
-      <h3>Register</h3>
+      <h3>Register New Account</h3>
 
       <label htmlFor="email">Email:</label>
       <input
@@ -30,7 +32,8 @@ const Register = () => {
         value={password}
       />
 
-      <button type="submit">Register</button>
+      <button type="submit" disabled={isLoading}>Create Account</button>
+      {error && <div className="error">{error}</div>}
     </form>
   );
 }

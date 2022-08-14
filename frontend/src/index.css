@@ -64,6 +64,15 @@ label, input {
   display: block;
 }
 
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
 .pages{
   max-width: 1200px;
   padding: 20px;
@@ -164,16 +173,6 @@ label, input {
 
 .workout-edit-form button.cancel {
   background: #888;
-}
-
-.workout-form div.error,
-.workout-edit-form div.error {
-  padding: 10px;
-  background: #ffefef;
-  border: 1px solid var(--error);
-  color: var(--error);
-  border-radius: 4px;
-  margin: 20px 0;
 }
 
 /* navbar */
