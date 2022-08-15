@@ -9,7 +9,7 @@ export const useLogout = () => {
     if (!user) {
       console.log('no logged in user');
     } else if (user) {
-      console.log('logging out user', user);
+      console.log('logging out user');
       localStorage.removeItem('user');
       dispatch({ type: 'LOGOUT' });
     }
