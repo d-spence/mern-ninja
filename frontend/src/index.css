@@ -193,6 +193,12 @@ div.error {
   color: #f1f1f1;
 }
 
+.navbar nav span {
+  color: #888;
+  font-size: 0.8em;
+  margin-right: 10px;
+}
+
 /* login and register auth forms */
 form.login,
 form.register {
