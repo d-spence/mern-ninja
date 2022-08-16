@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const WorkoutEditForm = () => {
   const { editedWorkout, dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
+
   const [title, setTitle] = useState(editedWorkout ? editedWorkout.title : '');
   const [load, setLoad] = useState(editedWorkout ? editedWorkout.load : 0);
   const [reps, setReps] = useState(editedWorkout ? editedWorkout.reps : 0);
@@ -21,6 +24,11 @@ const WorkoutEditForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      setError('You must be logged in');
+      return;
+    }
+
     const updatedWorkout = { title, load, reps };
 
     const response = await fetch('/api/workouts/' + editedWorkout._id, {
@@ -28,6 +36,7 @@ const WorkoutEditForm = () => {
       body: JSON.stringify(updatedWorkout),
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
       },
     });
 

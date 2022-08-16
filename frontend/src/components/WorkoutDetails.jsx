@@ -2,14 +2,19 @@ import { useState, useEffect } from 'react';
 import { format, formatDistanceToNow } from 'date-fns';
 import { toast } from 'react-toastify';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const WorkoutDetails = ({ workout }) => {
   const { editedWorkout, dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
+
   const [isBeingEdited, setIsBeingEdited] = useState(false);
 
   const dateCreated = new Date(workout.createdAt);
 
   const handleEditOnClick = () => {
+    if (!user) return;
+
     if (!editedWorkout && !isBeingEdited) {
       dispatch({ type: 'EDIT_WORKOUT_FORM', payload: workout });
       setIsBeingEdited(true);
@@ -17,9 +22,14 @@ const WorkoutDetails = ({ workout }) => {
   }
 
   const handleDeleteOnClick = async () => {
+    if (!user) return;
+
     if (!isBeingEdited) {
       const response = await fetch('/api/workouts/' + workout._id, {
         method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${user.token}`,
+        }
       });
 
       const data = await response.json();
