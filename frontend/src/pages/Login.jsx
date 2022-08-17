@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLogin } from '../hooks/useLogin';
 
 const Login = () => {
@@ -31,6 +32,8 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
+
+      <Link to="/register" title="create a new account">Don't have an account?</Link>
 
       <button type="submit" disabled={isLoading}>Log in</button>
       {error && <div className="error">{error}</div>}
