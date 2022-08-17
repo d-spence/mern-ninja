@@ -34,6 +34,9 @@ const Home = () => {
         {workouts && workouts.map((workout) => (
           <WorkoutDetails key={workout._id} workout={workout} />
         ))}
+        {workouts?.length < 1 && (
+          <h4>You haven't added any workouts yet...</h4>
+        )}
       </div>
       {editedWorkout && <WorkoutEditForm workout={editedWorkout} />}
       {!editedWorkout && <WorkoutForm />}

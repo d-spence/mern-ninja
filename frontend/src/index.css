@@ -91,6 +91,15 @@ div.error {
   gap: 40px;
 }
 
+.workouts > h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #bbb;
+  margin: 0;
+}
+
 .workout-details {
   background: #fff;
   border-radius: 4px;
