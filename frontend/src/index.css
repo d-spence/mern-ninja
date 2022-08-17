@@ -5,6 +5,10 @@
   --error: #e7195a;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: #f1f1f1;
   margin: 0;
@@ -29,6 +33,51 @@ header a {
   text-decoration: none;
 }
 
+button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 6px 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+input {
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+input:focus {
+  outline: 2px solid var(--primary);
+}
+
+input.error,
+input.error {
+  border: 1px solid var(--error);
+}
+
+label, input {
+  display: block;
+}
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
 .pages{
   max-width: 1200px;
   padding: 20px;
@@ -40,6 +89,15 @@ header a {
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 40px;
+}
+
+.workouts > h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #bbb;
+  margin: 0;
 }
 
 .workout-details {
@@ -77,7 +135,7 @@ header a {
   width: 24px;
   height: 24px;
   color: #333;
-  padding: 2px;
+  margin: 4px 0;
   border-radius: 4px;
   transition: 0.2s all;
   cursor: pointer;
@@ -107,56 +165,73 @@ header a {
 }
 
 /* new/edit workout forms */
-.workout-form label, input,
-.workout-edit-form label, input {
-  display: block;
-}
-
 .workout-form input,
 .workout-edit-form input {
-  padding: 10px;
-  margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.workout-form button {
   width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+  max-width: 160px;
 }
 
-.workout-form input:focus,
-.workout-edit-form input:focus {
-  outline: 2px solid var(--primary);
-}
-
-.workout-form input.error,
-.workout-edit-form input.error {
-  border: 1px solid var(--error);
-}
-
-.workout-form button,
 .workout-edit-form button {
-  background: var(--primary);
-  border: 0;
-  color: #fff;
-  padding: 10px;
-  margin: 10px 10px 0 0;
-  font-family: "Poppins";
-  border-radius: 4px;
-  cursor: pointer;
+  width: 50%;
+  max-width: 160px;
+}
+
+.workout-edit-form button:first-of-type {
+  margin-right: 10px;
+  width: calc(50% - 10px);
 }
 
 .workout-edit-form button.cancel {
   background: #888;
 }
 
-.workout-form div.error,
-.workout-edit-form div.error {
-  padding: 10px;
-  background: #ffefef;
-  border: 1px solid var(--error);
-  color: var(--error);
+/* navbar */
+.navbar nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar nav a {
+  margin-left: 10px;
+  padding: 4px 8px;
   border-radius: 4px;
-  margin: 20px 0;
+  transition: 0.2s all;
+}
+
+.navbar nav a:hover {
+  background: var(--primary);
+  color: #f1f1f1;
+}
+
+.navbar nav span {
+  color: #888;
+  font-size: 0.8em;
+  margin-right: 10px;
+}
+
+/* login and register auth forms */
+form.login,
+form.register {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+form.login input,
+form.register input {
+  margin-bottom: 20px;
+}
+
+form.login a {
+  display: block;
+  font-size: 0.8em;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 900px) {
