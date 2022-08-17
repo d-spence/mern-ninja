@@ -1,17 +1,16 @@
 import { useAuthContext } from './useAuthContext';
+import { useWorkoutsContext } from './useWorkoutsContext';
 
 export const useLogout = () => {
-  const { dispatch } = useAuthContext();
+  const { dispatch: authDispatch, user } = useAuthContext();
+  const { dispatch: workoutsDispatch } = useWorkoutsContext();
 
   const logout = () => {
-    const user = localStorage.getItem('user');
-
-    if (!user) {
-      console.log('no logged in user');
-    } else if (user) {
-      console.log('logging out user');
+    if (user) {
       localStorage.removeItem('user');
-      dispatch({ type: 'LOGOUT' });
+
+      authDispatch({ type: 'LOGOUT' });
+      workoutsDispatch({ type: 'SET_WORKOUTS', payload: [] });
     }
   }
 
